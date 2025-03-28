@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_primary">#1e1f22</color>
     <color name="dark_secondary">#2b2d30</color>
+    <color name="element_primary">#34d399</color>
+    <color name="dark_text_primary">#ffffff</color>
+    <color name="dark_text_secondary">#909da4</color>
 </resources>
