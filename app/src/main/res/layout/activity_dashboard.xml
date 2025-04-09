@@ -123,17 +123,19 @@
                     android:layout_height="match_parent"
                     android:padding="16dp">
 
-                    <ImageView
+                    <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/fileIcon"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:src="@drawable/upload"
+                        android:layout_width="102dp"
+                        android:layout_height="95dp"
                         app:layout_constraintBottom_toTopOf="@+id/uploadTitle"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        tools:ignore="ContentDescription" />
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/file_upload_animation"
+                        app:lottie_speed="1.0" />
 
                     <TextView
                         android:id="@+id/uploadTitle"
@@ -290,17 +292,19 @@
                     android:layout_height="match_parent"
                     android:padding="16dp">
 
-                    <ImageView
+                    <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/urlIcon"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:src="@drawable/link"
                         app:layout_constraintBottom_toTopOf="@+id/urlTitle"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed"
-                        tools:ignore="ContentDescription" />
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/url_input_animation"
+                        app:lottie_speed="1.0" />
 
                     <TextView
                         android:id="@+id/urlTitle"
@@ -349,7 +353,7 @@
                         app:boxStrokeWidthFocused="0dp"
                         app:endIconDrawable="@drawable/search"
                         app:endIconMode="custom"
-                        app:endIconTint="@color/element_primary"
+                        app:endIconTint="@color/accent_primary"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -474,7 +478,7 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/element_primary"
+        android:backgroundTint="@color/accent_primary"
         android:text="Start Scan"
         android:textColor="@color/dark_primary"
         android:textSize="16sp"
