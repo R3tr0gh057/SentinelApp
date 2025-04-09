@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="dark_primary">#1e1f22</color>
-    <color name="dark_secondary">#2b2d30</color>
-    <color name="element_primary">#34d399</color>
-    <color name="dark_text_primary">#ffffff</color>
-    <color name="dark_text_secondary">#909da4</color>
+    <!-- Primary Colors -->
+    <color name="dark_primary">#121212</color>
+    <color name="dark_secondary">#1E1E1E</color>
+    <color name="dark_surface">#242424</color>
+    
+    <!-- Accent Colors -->
+    <color name="accent_primary">#00E5FF</color>
+    <color name="accent_secondary">#2979FF</color>
+    <color name="accent_tertiary">#651FFF</color>
+    
+    <!-- Text Colors -->
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#B3FFFFFF</color>
+    <color name="dark_text_disabled">#80FFFFFF</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#00E676</color>
+    <color name="warning">#FFD600</color>
+    <color name="error">#FF1744</color>
+    
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#00E5FF</color>
+    <color name="gradient_center">#2979FF</color>
+    <color name="gradient_end">#651FFF</color>
+    
+    <!-- System Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>
