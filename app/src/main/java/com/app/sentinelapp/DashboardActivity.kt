@@ -19,6 +19,7 @@ import java.io.File
 import java.io.FileOutputStream
 import android.webkit.URLUtil
 import com.google.android.material.snackbar.Snackbar
+import org.json.JSONObject
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -191,10 +192,20 @@ class DashboardActivity : AppCompatActivity() {
             showLoading(false)
             result.fold(
                 onSuccess = { jsonString ->
-                    val intent = Intent(this, ScanResultActivity::class.java).apply {
-                        putExtra("scan_result", jsonString)
+                    try {
+                        val json = JSONObject(jsonString)
+                        val analysisUrl = json.getJSONObject("data")
+                            .getJSONObject("links")
+                            .getString("self")
+                        
+                        val intent = Intent(this, ScanResultActivity::class.java).apply {
+                            putExtra(ScanResultActivity.EXTRA_SCAN_ID, analysisUrl)
+                            putExtra(ScanResultActivity.EXTRA_IS_URL_SCAN, tabLayout.selectedTabPosition == 1)
+                        }
+                        startActivity(intent)
+                    } catch (e: Exception) {
+                        showError("Failed to parse scan result: ${e.message}")
                     }
-                    startActivity(intent)
                 },
                 onFailure = { exception ->
                     showError("Scan failed: ${exception.message}")

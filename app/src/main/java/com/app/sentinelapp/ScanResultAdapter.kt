@@ -1,44 +1,57 @@
 package com.app.sentinelapp
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.app.sentinelapp.api.ScanResult
+import com.app.sentinelapp.databinding.ItemScanResultBinding
 
-class ScanResultAdapter : ListAdapter<ScanResultItem, ScanResultAdapter.ViewHolder>(DiffCallback()) {
+class ScanResultAdapter : RecyclerView.Adapter<ScanResultAdapter.ViewHolder>() {
+    private var results: List<ScanResult> = emptyList()
+
+    fun updateResults(newResults: List<ScanResult>) {
+        results = newResults
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_scan_result_row, parent, false)
-        return ViewHolder(view)
+        val binding = ItemScanResultBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(results[position])
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val engineNameText: TextView = view.findViewById(R.id.engineNameText)
-        private val categoryText: TextView = view.findViewById(R.id.categoryText)
-        private val resultText: TextView = view.findViewById(R.id.resultText)
+    override fun getItemCount(): Int = results.size
 
-        fun bind(item: ScanResultItem) {
-            engineNameText.text = item.engineName
-            categoryText.text = item.category
-            resultText.text = item.result
-        }
-    }
+    class ViewHolder(
+        private val binding: ItemScanResultBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-    private class DiffCallback : DiffUtil.ItemCallback<ScanResultItem>() {
-        override fun areItemsTheSame(oldItem: ScanResultItem, newItem: ScanResultItem): Boolean {
-            return oldItem.engineName == newItem.engineName
-        }
-
-        override fun areContentsTheSame(oldItem: ScanResultItem, newItem: ScanResultItem): Boolean {
-            return oldItem == newItem
+        fun bind(result: ScanResult) {
+            binding.apply {
+                engineNameText.text = result.engineName
+                categoryText.text = result.category
+                resultText.text = result.result
+                
+                // Set threat indicator color based on isThreat
+                threatIndicator.setImageResource(
+                    if (result.isThreat) R.drawable.ic_threat
+                    else R.drawable.ic_clean
+                )
+                
+                threatIndicator.setColorFilter(
+                    itemView.context.getColor(
+                        if (result.isThreat) R.color.danger
+                        else R.color.success
+                    )
+                )
+            }
         }
     }
 } 

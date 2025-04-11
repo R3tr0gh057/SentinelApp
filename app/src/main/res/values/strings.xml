@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SentinelApp</string>
+    <string name="threats_found_summary">%d threats detected! Please review the details below.</string>
+    <string name="no_threats_found">No threats detected. Your scan is clean!</string>
+    <string name="request_in_queue">Your scan is in queue. Please wait...</string>
 </resources>
