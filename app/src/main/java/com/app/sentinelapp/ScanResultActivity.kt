@@ -149,6 +149,7 @@ class ScanResultActivity : AppCompatActivity() {
         binding.resultSummaryText.visibility = View.VISIBLE
         binding.resultsRecyclerView.visibility = View.VISIBLE
         binding.statsChart.visibility = View.VISIBLE
+        binding.resultsTitle.visibility = View.VISIBLE
         binding.infoCard.visibility = View.VISIBLE
         binding.chartTitle.visibility = View.VISIBLE
         binding.fileInfo.visibility = View.VISIBLE
@@ -277,7 +278,7 @@ class ScanResultActivity : AppCompatActivity() {
 
     private fun showQueueStatus() {
         binding.loadingProgress.visibility = View.VISIBLE
-        binding.resultSummaryText.visibility = View.GONE
+        binding.resultsTitle.visibility = View.GONE
         binding.chartTitle.visibility = View.GONE
         binding.fileInfo.visibility = View.GONE
         binding.resultSummaryText.text = getString(R.string.request_in_queue)
@@ -288,7 +289,9 @@ class ScanResultActivity : AppCompatActivity() {
 
     private fun showLoading() {
         binding.loadingProgress.visibility = View.VISIBLE
-        binding.resultSummaryText.visibility = View.GONE
+        binding.chartTitle.visibility = View.GONE
+        binding.fileInfo.visibility = View.GONE
+        binding.resultsTitle.visibility = View.GONE
         binding.resultsRecyclerView.visibility = View.GONE
         binding.statsChart.visibility = View.GONE
         binding.infoCard.visibility = View.GONE
